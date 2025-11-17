@@ -1,6 +1,6 @@
-package com.itau.desafiotecnico.larissa.bankingApp.itau.repository;
+package com.itau.desafiotecnico.larissa.banking.repository;
 
-import com.itau.desafiotecnico.larissa.bankingApp.itau.entity.Client;
+import com.itau.desafiotecnico.larissa.banking.entity.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

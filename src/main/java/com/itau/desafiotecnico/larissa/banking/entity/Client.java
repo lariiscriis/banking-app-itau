@@ -1,4 +1,4 @@
-package com.itau.desafiotecnico.larissa.bankingApp.itau.entity;
+package com.itau.desafiotecnico.larissa.banking.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
