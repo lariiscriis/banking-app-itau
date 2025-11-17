@@ -34,6 +34,6 @@ public class Client {
     @NotBlank
     private String accountNumber;
     @NotBlank
-    private String branch;
+    private String agencyNumber;
     private BigDecimal balance = BigDecimal.ZERO;
 }
