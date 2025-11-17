@@ -1,4 +1,4 @@
-package com.itau.desafiotecnico.larissa.banking_app_itau;
+package com.itau.desafiotecnico.larissa.bankingApp.itau;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
