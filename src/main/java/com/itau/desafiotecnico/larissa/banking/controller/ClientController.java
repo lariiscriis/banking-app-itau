@@ -37,6 +37,13 @@ public class ClientController {
         return ResponseEntity.ok(client);
     }
 
+    @GetMapping("/{id}/balance")
+    public ResponseEntity<BigDecimal> getBalance(@PathVariable Long id){
+        BigDecimal balance = clientService.getBalance(id);
+        return ResponseEntity.ok(balance);
+    }
+
+
     @PostMapping("/{accountNumber}/withdraw")
     public ResponseEntity<Client> withdraw(
             @PathVariable String accountNumber,
