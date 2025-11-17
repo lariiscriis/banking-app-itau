@@ -7,26 +7,33 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.math.BigDecimal;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Entity
 @Table(name = "clients")
 public class Client {
+
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank
     private String name;
     @CPF(message = "Invalid CPF")
     @NotBlank
     private String cpf;
-    private String  email;
-    private String  password;
-    private String  accountNumber;
+    @NotBlank
+    private String email;
+    @NotBlank
+    private String password;
+    @NotBlank
+    private String accountNumber;
+    @NotBlank
     private String branch;
     private BigDecimal balance = BigDecimal.ZERO;
-
 }

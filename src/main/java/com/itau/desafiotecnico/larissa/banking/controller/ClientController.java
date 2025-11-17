@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -25,6 +26,34 @@ public class ClientController {
     public ResponseEntity<List<Client>> getAllClients(){
         List<Client> clients = clientService.getAllClients();
         return ResponseEntity.ok(clients);
+    }
+
+    @PostMapping("/{accountNumber}/deposit")
+    public ResponseEntity<Client> deposit(
+            @PathVariable String accountNumber,
+            @RequestParam BigDecimal amount ){
+
+        Client client = clientService.deposit(accountNumber, amount);
+        return ResponseEntity.ok(client);
+    }
+
+    @PostMapping("/{accountNumber}/withdraw")
+    public ResponseEntity<Client> withdraw(
+            @PathVariable String accountNumber,
+            @RequestParam BigDecimal amount
+    ){
+        Client client = clientService.withdraw(accountNumber, amount);
+        return ResponseEntity.ok(client);
+    }
+
+    @PostMapping("/transfer")
+    public ResponseEntity<String> transfer(
+            @RequestParam String fromAccountNumber,
+            @RequestParam String toAccountNumber,
+            @RequestParam BigDecimal amount
+    ){
+        clientService.transfer(fromAccountNumber, toAccountNumber, amount);
+        return ResponseEntity.ok("Transferência realizada com sucesso!");
     }
 
 }
