@@ -21,9 +21,19 @@ loadClient();
 
 function addHistory(text) {
     const li = document.createElement("li");
-    li.textContent = text + " (" + new Date().toLocaleString() + ")";
+
+    const data = new Date();
+    const dataFormatada = data.toLocaleDateString("pt-BR", {
+        weekday: "long",
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+    });
+
+    li.textContent = `${text} (${dataFormatada})`;
     document.getElementById("historyList").appendChild(li);
 }
+
 
 function openModal(id) {
     document.getElementById(id).style.display = "block";
@@ -36,10 +46,16 @@ function closeModal(id) {
 async function deposit() {
     const amount = document.getElementById("depositAmount").value;
 
-    await fetch(`/api/clients/${clientData.accountNumber}/deposit?amount=${amount}`, {
+    const response = await fetch(`/api/clients/${clientData.accountNumber}/deposit?amount=${amount}`, {
         method: "POST",
         headers
     });
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        alert(errorText || "Erro ao realizar depósito.");
+        return;
+    }
 
     closeModal("depositModal");
     addHistory("Depósito de R$ " + amount);
@@ -49,10 +65,16 @@ async function deposit() {
 async function withdraw() {
     const amount = document.getElementById("withdrawAmount").value;
 
-    await fetch(`/api/clients/${clientData.accountNumber}/withdraw?amount=${amount}`, {
+    const response = await fetch(`/api/clients/${clientData.accountNumber}/withdraw?amount=${amount}`, {
         method: "POST",
         headers
     });
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        alert(errorText || "Erro ao realizar saque.");
+        return;
+    }
 
     closeModal("withdrawModal");
     addHistory("Saque de R$ " + amount);
@@ -63,10 +85,16 @@ async function transfer() {
     const toAccount = document.getElementById("toAccount").value;
     const amount = document.getElementById("transferAmount").value;
 
-    await fetch(`/api/clients/transfer?fromAccountNumber=${clientData.accountNumber}&toAccountNumber=${toAccount}&amount=${amount}`, {
+    const response = await fetch(`/api/clients/transfer?fromAccountNumber=${clientData.accountNumber}&toAccountNumber=${toAccount}&amount=${amount}`, {
         method: "POST",
         headers
     });
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        alert(errorText || "Erro ao realizar transferência.");
+        return; //
+    }
 
     closeModal("transferModal");
     addHistory(`Transferência de R$ ${amount} para conta ${toAccount}`);

@@ -4,29 +4,60 @@
     <meta charset="UTF-8">
     <title>Inicío - Banco Digital</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="icon" type="image/png" href="images/logo_itau_.png">
 
 </head>
 <body>
 
-<div class="container">
-    <h2>Bem-vindo, <span id="clientName"></span></h2>
+<div class="dashboard">
 
-    <div class="info-box">
-        <p><strong>Agência:</strong> <span id="agencyNumber"></span></p>
-        <p><strong>Conta:</strong> <span id="accountNumber"></span></p>
-        <p><strong>Saldo:</strong> R$ <span id="balance"></span></p>
-    </div>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="profile">
+            <div class="avatar">
+                <i class="bi bi-person-circle" style="color: white;"></i>
+            </div>
+            <h3 id="clientNameSidebar"></h3>
+        </div>
 
-    <div class="actions">
-        <button onclick="openModal('depositModal')">Depositar</button>
-        <button onclick="openModal('withdrawModal')">Sacar</button>
-        <button onclick="openModal('transferModal')">Transferir</button>
-    </div>
+        <nav class="menu">
+            <button onclick="openModal('depositModal')">Depositar</button>
+            <button onclick="openModal('withdrawModal')">Sacar</button>
+            <button onclick="openModal('transferModal')">Transferir</button>
+        </nav>
 
-    <h3>Histórico de ações</h3>
-    <ul id="historyList"></ul>
+        <button id="logoutBtn" class="logout-btn">Sair</button>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <h1>Bem-vindo, <span id="clientName"></span></h1>
+        </header>
+
+        <section class="info-cards">
+            <div class="card">
+                <p class="label">Saldo</p>
+                <h2>R$ <span id="balance"></span></h2>
+            </div>
+            <div class="card">
+                <p class="label">Agência</p>
+                <h2><span id="agencyNumber"></span></h2>
+            </div>
+            <div class="card">
+                <p class="label">Conta</p>
+                <h2><span id="accountNumber"></span></h2>
+            </div>
+        </section>
+
+        <section class="history">
+            <h3>Histórico de atividades</h3>
+            <ul id="historyList"></ul>
+        </section>
+
+    </main>
 </div>
-
 
 <div id="depositModal" class="modal">
     <div class="modal-content">
@@ -36,7 +67,6 @@
         <button class="close" onclick="closeModal('depositModal')">Fechar</button>
     </div>
 </div>
-<button id="logoutBtn" class="logout-btn">Sair</button>
 
 <div id="withdrawModal" class="modal">
     <div class="modal-content">
@@ -58,6 +88,6 @@
 </div>
 
 <script src="js/dashboard.js"></script>
-
 </body>
+
 </html>
