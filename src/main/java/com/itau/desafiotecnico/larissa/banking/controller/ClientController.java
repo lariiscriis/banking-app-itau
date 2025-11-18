@@ -45,6 +45,24 @@ public class ClientController {
         return ResponseEntity.ok(token);
     }
 
+    @Operation(summary = "Obter dados do cliente logado")
+    @GetMapping("/me")
+    public ResponseEntity<ClientDTO> getLoggedClient(@RequestHeader("Authorization") String authHeader){
+        String token = authHeader.substring(7);
+        String email = jwtService.extractEmail(token);
+        Client client = clientService.findByEmail(email);
+        ClientDTO clientDTO = new ClientDTO(
+                client.getId(),
+                client.getName(),
+                client.getCpf(),
+                client.getEmail(),
+                client.getAccountNumber(),
+                client.getAgencyNumber(),
+                client.getBalance()
+        );
+        return ResponseEntity.ok(clientDTO);
+    }
+
     @Operation(summary = "Obter todos os clientes")
     @GetMapping
     public ResponseEntity<List<ClientDTO>> getAllClients(){

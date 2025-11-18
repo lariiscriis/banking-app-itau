@@ -68,6 +68,12 @@ public class ClientService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
+    public Client findByEmail(String email){
+        return clientRepository.findByEmail(email)
+                .orElseThrow(() -> new ClientNotFoundException("Cliente não encontrado"));
+    }
+
     public BigDecimal getBalance(Long id){
         Client client = clientRepository.findById(id)
                 .orElseThrow(() -> new ClientNotFoundException("Cliente não encontrado."));

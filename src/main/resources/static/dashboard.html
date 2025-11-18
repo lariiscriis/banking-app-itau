@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicío - Banco Digital</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Bem-vindo, <span id="clientName"></span></h2>
+
+    <div class="info-box">
+        <p><strong>Agência:</strong> <span id="agencyNumber"></span></p>
+        <p><strong>Conta:</strong> <span id="accountNumber"></span></p>
+        <p><strong>Saldo:</strong> R$ <span id="balance"></span></p>
+    </div>
+
+    <div class="actions">
+        <button onclick="openModal('depositModal')">Depositar</button>
+        <button onclick="openModal('withdrawModal')">Sacar</button>
+        <button onclick="openModal('transferModal')">Transferir</button>
+    </div>
+
+    <h3>Histórico de ações</h3>
+    <ul id="historyList"></ul>
+</div>
+
+
+<div id="depositModal" class="modal">
+    <div class="modal-content">
+        <h3>Depósito</h3>
+        <input type="number" id="depositAmount" placeholder="Valor">
+        <button onclick="deposit()">Confirmar</button>
+        <button class="close" onclick="closeModal('depositModal')">Fechar</button>
+    </div>
+</div>
+<button id="logoutBtn" class="logout-btn">Sair</button>
+
+<div id="withdrawModal" class="modal">
+    <div class="modal-content">
+        <h3>Saque</h3>
+        <input type="number" id="withdrawAmount" placeholder="Valor">
+        <button onclick="withdraw()">Confirmar</button>
+        <button class="close" onclick="closeModal('withdrawModal')">Fechar</button>
+    </div>
+</div>
+
+<div id="transferModal" class="modal">
+    <div class="modal-content">
+        <h3>Transferência</h3>
+        <input type="text" id="toAccount" placeholder="Conta destino">
+        <input type="number" id="transferAmount" placeholder="Valor">
+        <button onclick="transfer()">Confirmar</button>
+        <button class="close" onclick="closeModal('transferModal')">Fechar</button>
+    </div>
+</div>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
