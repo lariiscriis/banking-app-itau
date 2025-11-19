@@ -92,6 +92,81 @@ src/main/java/com/itau/desafiotecnico/larissa/banking/
 └── BankingAppItauApplication.java # Classe principal
 ```
 ---
+##  🧩  Diagrama UML
+```mermaid
+classDiagram
+
+    class Client {
+        -Long id
+        -String name
+        -String cpf
+        -String email
+        -String password
+        -String accountNumber
+        -String agencyNumber
+        -BigDecimal balance
+    }
+
+    class ClientDTO {
+        +Long id
+        +String name
+        +String email
+        +String cpf
+        +String accountNumber
+        +String agencyNumber
+        +BigDecimal balance
+    }
+
+    class LoginDTO {
+        +String email
+        +String password
+    }
+
+    class ClientRepository {
+        <<interface>>
+        +findByEmail()
+        +findByAccountNumber()
+        +existsByCpf()
+        +existsByEmail()
+        +existsByAccountNumber()
+    }
+
+    class ClientValidation {
+        +validateCpf()
+        +validateBalanceTransfer()
+    }
+
+    class ClientService {
+        +registerClient()
+        +login()
+        +getAllClients()
+        +findByEmail()
+        +deposit()
+        +withdraw()
+        +transfer()
+    }
+
+    class JwtService {
+        +generateToken()
+        +extractEmail()
+    }
+
+    class ClientController {
+        +registerClient()
+        +login()
+        +getLoggedClient()
+        +getAllClients()
+        +deposit()
+        +withdraw()
+        +transfer()
+    }
+
+    ClientController --> ClientService : calls
+    ClientController --> JwtService : calls
+    ClientService --> ClientRepository : queries
+    ClientService --> ClientValidation : validates
+```
+---
 
 ## 🎯 Endpoints da API
 
