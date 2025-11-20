@@ -1,6 +1,6 @@
 # 🏦 Banking API — Desafio Técnico Itaú
 
-API REST para operações bancárias básicas desenvolvida com **Java 21**, **Spring Boot 3**, **Spring Security (JWT)** e **H2 Database**, seguindo os requisitos do desafio técnico do Itaú Unibanco.
+API RESTful para operações bancárias básicas desenvolvida com **Java 21**, **Spring Boot 3**, **Spring Security (JWT)** e **H2 Database**, seguindo os requisitos do desafio técnico do Itaú Unibanco.
 
 ---
 
