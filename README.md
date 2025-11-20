@@ -6,14 +6,15 @@ API REST para operações bancárias básicas desenvolvida com **Java 21**, **Sp
 
 ## 📌 Sobre o Projeto
 
-Este projeto implementa todas as funcionalidades solicitadas, além de diversos aprimoramentos que tornam a aplicação mais robusta, segura e próxima de um sistema real.
+Este projeto implementa todas as funcionalidades solicitadas na parte 1 do desafio e também contém o diagrama de arquitetura simples pedido pela parte 2 do mesmo, além de diversos aprimoramentos que tornam a aplicação mais robusta, segura e próxima de um sistema real.
 
 ### Funcionalidades do desafio:
 - ✔ Criação de contas  
 - ✔ Consulta de saldo  
 - ✔ Transferências  
 - ✔ Armazenamento totalmente em memória  
-- ✔ Documentação com Swagger  
+- ✔ Documentação com Swagger
+- ✔ Arquitetura do ambiente Cloud
 
 #### Além do solicitado, o projeto também inclui:
 
@@ -60,7 +61,7 @@ Escolhi seguir esse padrão para manter o código mais profissional, alinhado a 
 - Maven  
 - Mockito & JUnit 5
 - Frontend próprio usando HTML, CSS e JavaScript
-
+- DrawIO (Arquitetura)
 ---
 
 ## 📦 Estrutura do Projeto
@@ -168,6 +169,11 @@ classDiagram
 ```
 ---
 
+## 📊 Proposta de Arquitetura Cloud
+
+![Proposta de Arquitetura Cloud](docs/itau_desafio.drawio.png)
+
+---
 ## 🎯 Endpoints da API
 
 ### Contas
